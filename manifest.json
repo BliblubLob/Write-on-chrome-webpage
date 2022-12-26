@@ -1,0 +1,21 @@
+{
+    "name": "Webpage Scribble",
+    "description": "Scribble On Webpage",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+      "default_popup": "main.html",
+      "default_icon": "pen.png"
+    },
+    "content_scripts": [
+        {
+          "js": ["scribble.js"],
+          "matches": [
+            "*",
+            "https://developer.chrome.com/docs/extensions/*",
+            "https://developer.chrome.com/docs/webstore/*"
+          ]
+        }
+      ]
+  }
+  
