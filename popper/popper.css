@@ -1,0 +1,45 @@
+body {
+    width: 30rem;
+    height: 10rem;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding-inline-start: 0;
+    margin: 1rem 0;
+  }
+  
+  li {
+    padding: 0.25rem;
+  }
+  li:nth-child(odd) {
+    background: #80808030;
+  }
+  li:nth-child(even) {
+    background: #ffffff;
+  }
+  
+  h3,
+  p {
+    margin: 0;
+  }
+
+  #brush-width-display{
+    display: none;
+  }
+
+  #help-display{
+    display: none;
+  }
+
+  .body-background{
+    background-color: #b3b2e375;
+  }
+
+  .btn:focus{
+    background-color: black;
+    color:white;
+  }
+
+
+  

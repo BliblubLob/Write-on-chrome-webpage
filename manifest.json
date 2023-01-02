@@ -4,10 +4,13 @@
     "version": "1.0",
     "manifest_version": 3,
     "action": {
+    "default_popup": "popper/popper.html",
       "default_icon": "pen.png"
     },
     "permissions": [
-        "activeTab"
+        "tabs",
+        "activeTab",
+        "storage"
       ],
       "background": {
         "service_worker": "background.js"
