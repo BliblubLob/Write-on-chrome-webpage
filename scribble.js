@@ -43,8 +43,13 @@ var active = false
 
 //send message between popperjs and scribblejs
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    console.log(request)
-    context.strokeStyle = request.color
+    if (request.color){
+        context.strokeStyle = request.color
+    }
+    if(request.width){
+        context.lineWidth = parseInt(request.width) * 0.5;
+        console.log(context.lineWidth)
+    }
     sendResponse({ status: "done" });
   });
 
@@ -81,7 +86,6 @@ body.addEventListener('mousemove',function(e){
             context.beginPath();
             context.moveTo(lastEvent.pageX,lastEvent.pageY);
             context.lineTo(e.pageX,e.pageY);
-            context.lineWidth=markerWidth;
             context.lineCap='round';
             context.stroke();
         }
