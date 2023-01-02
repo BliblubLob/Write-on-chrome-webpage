@@ -54,10 +54,32 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   });
 
 
-document.addEventListener('keypress',function (e) {
+const keys = {}
+const clear = function(){
+    console.log('trigger')
+      context.clearRect(0,0,canvas.width,canvas.height);
+      keys.d = false
+      keys.control = false
+    };
+
+document.addEventListener('keydown',function (e) {
     e = e || window.event
+    console.log(e)
     if (e.key == 'd'||'D'){
         active = true
+        if (keys.control){
+            clear()
+        }
+        else{
+            keys.d = true
+        }
+    }
+    if(e.key == 'Control'){
+        if (keys.d){
+            clear()
+        }else{
+            keys.control = true
+        }
     }
 });
 
@@ -65,6 +87,10 @@ document.addEventListener('keyup',function (e) {
     e = e || window.event
     if (e.key == 'd'){
         active = false
+        keys.d = false
+    }
+    if(e.key == 'Control'){
+        keys.control = false
     }
 });
 
@@ -99,6 +125,3 @@ body.addEventListener('mouseup',function(){
     canvas.style.pointerEvents = 'none'
   })
 
-var clear = function(){
-//   context.clearRect(0,0,575,300);
-};

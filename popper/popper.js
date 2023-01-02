@@ -49,6 +49,8 @@ widthPicker.addEventListener("input",
       }
 );
 
+
+//_____________________Toggling between different displays___________________
 const brushColorBtn = document.getElementById('brush-color-btn')
 const brushColorDisplay = document.getElementById('brush-color-display')
 
