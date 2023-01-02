@@ -56,7 +56,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
 document.addEventListener('keypress',function (e) {
     e = e || window.event
-    if (e.key == 'd'){
+    if (e.key == 'd'||'D'){
         active = true
     }
 });

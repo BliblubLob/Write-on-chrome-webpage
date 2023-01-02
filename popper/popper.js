@@ -1,9 +1,18 @@
+//________________set up color picker___________________
 const colorPicker = document.getElementById('color-picker')
+//access saved color
+chrome.storage.local.get(["color"]).then((result) => {
+    colorPicker.value = result.color
+  })
 colorPicker.addEventListener("input", 
     async function (e) {
         let queryOptions = { active: true, currentWindow: true };
         let [tab] = await chrome.tabs.query(queryOptions);
-      
+        //save current color for the above access
+        chrome.storage.local.set({ color: e.target.value }).then(() => {
+            console.log("Value is set to " + e.target.value);
+          });
+
         chrome.tabs.sendMessage(
           tab.id,
           { color: e.target.value },
@@ -14,7 +23,9 @@ colorPicker.addEventListener("input",
       }
 );
 
+//______________________set up width picker___________________________
 const widthPicker = document.getElementById('width-picker')
+//access saved width value
 chrome.storage.local.get(["width"]).then((result) => {
     widthPicker.value = result.width
   })
@@ -24,6 +35,7 @@ widthPicker.addEventListener("input",
         let queryOptions = { active: true, currentWindow: true };
         let [tab] = await chrome.tabs.query(queryOptions);
         widthPicker.value = e.target.value
+        //save current width value for above access
         chrome.storage.local.set({ width: e.target.value }).then(() => {
             console.log("Value is set to " + e.target.value);
           });
