@@ -48,7 +48,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     }
     if(request.width){
         context.lineWidth = parseInt(request.width) * 0.5;
-        console.log(context.lineWidth)
     }
     sendResponse({ status: "done" });
   });
@@ -56,7 +55,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
 const keys = {}
 const clear = function(){
-    console.log('trigger')
       context.clearRect(0,0,canvas.width,canvas.height);
       keys.d = false
       keys.control = false
@@ -64,7 +62,6 @@ const clear = function(){
 
 document.addEventListener('keydown',function (e) {
     e = e || window.event
-    console.log(e)
     if (e.key == 'd'||'D'){
         active = true
         if (keys.control){
