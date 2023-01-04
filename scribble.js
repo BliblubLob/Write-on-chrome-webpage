@@ -83,6 +83,7 @@ document.addEventListener('keydown',function (e) {
 document.addEventListener('keyup',function (e) {
     e = e || window.event
     if (e.key == 'd'){
+        //set unable to draw when d not pressed
         active = false
         keys.d = false
     }
@@ -119,6 +120,5 @@ body.addEventListener('mousemove',function(e){
 
 body.addEventListener('mouseup',function(){
     mouseDown = false; 
-    canvas.style.pointerEvents = 'none'
   })
 

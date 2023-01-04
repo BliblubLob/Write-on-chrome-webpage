@@ -1,6 +1,6 @@
 {
     "name": "Webpage Scribble",
-    "description": "Scribble On Webpage",
+    "description": "Scribble or write On Webpage, for teaching or recording videos maybe.",
     "version": "1.0",
     "manifest_version": 3,
     "action": {
