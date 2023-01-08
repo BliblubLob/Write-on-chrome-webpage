@@ -56,34 +56,32 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 const keys = {}
 const clear = function(){
       context.clearRect(0,0,canvas.width,canvas.height);
-      keys.d = false
-      keys.control = false
     };
 
 document.addEventListener('keydown',function (e) {
-    e = e || window.event
-    if (e.key == 'd'||'D'){
+    if (e.key == 'd'||event.key == 'D'){
+        //when drawing, block mouse events
+        canvas.style.pointerEvents = 'auto'
         active = true
         if (keys.control){
             clear()
         }
-        else{
-            keys.d = true
-        }
+        keys.d = true
     }
-    if(e.key == 'Control'){
-        if (keys.d){
-            clear()
-        }else{
+    else if(e.key == 'Control'){
+            if (keys.d){
+                clear()
+            }
             keys.control = true
+    
         }
-    }
 });
 
 document.addEventListener('keyup',function (e) {
-    e = e || window.event
-    if (e.key == 'd'){
+    if (e.key == 'd'||e.key == 'D'){
         //set unable to draw when d not pressed
+        //set to pass throught when not drawing
+        canvas.style.pointerEvents = 'none'
         active = false
         keys.d = false
     }
@@ -104,8 +102,6 @@ body.addEventListener('mousedown',function(e){
 
 body.addEventListener('mousemove',function(e){
     if(mouseDown){
-        //when drawing, block mouse events
-        canvas.style.pointerEvents = 'auto'
         if (context){
             context.beginPath();
             context.moveTo(lastEvent.pageX,lastEvent.pageY);
